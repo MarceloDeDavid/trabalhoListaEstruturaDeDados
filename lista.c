@@ -5,6 +5,16 @@
 
     // ----------------------  OPERAÇÕES BÁSICAS   ----------------------
 
+// mostrar menu.
+void mostrarMenu(){
+    printf("\n=== MENU ===\n");
+    printf("1. Inserções\n");
+    printf("2. Remoções\n");
+    printf("3. Consultas\n");
+    printf("4. Sair\n");
+    printf("Escolha uma opção: ");
+}
+
 
 // criar lista vazia.
 Lista CriaListaVazia(){
@@ -77,7 +87,7 @@ Lista insereEmPosicaoLivre(Lista qualquer){
     printf("(atualmente, você tem até a posição %d para inserir): ", qualquer.n+1);
     scanf("%d", &y);
     
-    //nesse caso, não fiz a conversão de índice y-- porque assim eu permitito
+    //nesse caso, não fiz a conversão de índice y-- porque assim eu permito
     //que seja inserido em qualquer lugar da lista inclusive ao final
     
     while(y < 1 || y > qualquer.n){ // y < 1 para não permitir índice negativo.
@@ -99,6 +109,15 @@ Lista insereEmPosicaoLivre(Lista qualquer){
     // ----------------------   REMOÇÕES   ----------------------
 
 // remover no início.
+Lista removerDoInicio(Lista qualquer) {
+    if (qualquer.n > 0) {
+        for (int i = 0; i < qualquer.n - 1; i++) {
+            qualquer.lista[i] = qualquer.lista[i + 1];
+        }
+        qualquer.n--;
+    }
+    return qualquer;
+}
 
 // remover no final.
 Lista removerFinal(Lista qualquer) {
@@ -109,14 +128,65 @@ Lista removerFinal(Lista qualquer) {
 }   
 
 // remover em posição arbitrária.
+Lista removeEmPosicaoArbitraria(Lista qualquer) {
+    int posicao;
+    printf("Digite a posição que você deseja remover: ");
+    scanf("%d", &posicao);
+    
+    if (posicao < 1 || posicao > qualquer.n) {
+        printf("Posição inválida.\n");
+        return qualquer;
+    }
+    
+    posicao--;
+    
+    for (int i = posicao; i < qualquer.n - 1; i++) {
+        qualquer.lista[i] = qualquer.lista[i + 1];
+    }
+    
+    qualquer.n--;
+    return qualquer;
+}
 
 // remover elemento por valor.
+Lista removePorValor(Lista qualquer) {
+    int valor;
+    printf("Digite o valor que você deseja remover: ");
+    scanf("%d", &valor);
 
+    for (int i = 0; i < qualquer.n; i++) {
+        if (qualquer.lista[i] == valor) {
+            for (int j = i; j < qualquer.n - 1; j++) {
+                qualquer.lista[j] = qualquer.lista[j + 1];
+            }
+            qualquer.n--;
+            return qualquer;
+        }
+    }
+
+    printf("Valor não encontrado na lista.\n");
+    return qualquer;
+}
 
     // ----------------------   CONSULTAS   ----------------------
 
 
 // buscar posição de um valor.
+int ConsultaPosicaoDoValor(Lista qualquer) {
+    int valor;
+    printf("Digite o valor que você deseja consultar a posição: ");
+    scanf("%d", &valor);
+
+    for (int i = 0; i < qualquer.n; i++) {
+        if (qualquer.lista[i] == valor) {
+            printf("O valor %d está na posição %d.\n", valor, i + 1);
+            return i + 1; // Retorna a posição (1-indexed)
+        }
+    }
+
+    printf("Valor não encontrado na lista.\n");
+    return -1; // Retorna -1 se o valor não for encontrado
+}
 
 
 

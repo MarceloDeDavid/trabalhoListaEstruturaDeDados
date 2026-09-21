@@ -20,8 +20,12 @@
  Lista insereEmPosicaoLivre(Lista qualquer);
 
  // REMOÇÕES
-Lista removerFinal(Lista qualquer);
+ Lista removerDoInicio(Lista qualquer);
+ Lista removerFinal(Lista qualquer);
+ Lista removeEmPosicaoArbitraria(Lista qualquer);
+ Lista removePorValor(Lista qualquer);
 
  // CONSULTAS
+ int ConsultaPosicaoDoValor(Lista qualquer);
  void consultarPosicao(Lista qualquer);
  void exibeLista(Lista qualquer);
