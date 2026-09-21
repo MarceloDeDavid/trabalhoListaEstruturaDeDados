@@ -21,7 +21,12 @@
 
  // REMOÇÕES
 Lista removerFinal(Lista qualquer);
+Lista removerDoInicio(Lista qualquer);
+Lista removeEmPosicaoArbitraria(Lista qualquer);
+Lista removePorValor(Lista qualquer);
+
 
  // CONSULTAS
- void consultarPosicao(Lista qualquer);
  void exibeLista(Lista qualquer);
+ void consultarValorPorPosicao(Lista qualquer);
+ int ConsultaPosicaoDoValor(Lista qualquer);
