@@ -8,26 +8,30 @@
      int n;
  } Lista;
  
- // OPERAÇÕES BÁSICAS
- Lista CriaListaVazia(void);
- bool VerificaSeListaVazia(Lista qualquer);
- bool VerificaSeListaCheia(Lista qualquer);
- int tamanhoLista(Lista qualquer);
+// Menus
+void mostrarMenu(Lista *qualquer);
+void mostrarMenuInsercoes(Lista *qualquer);
+void mostrarMenuRemocoes(Lista *qualquer);
+void mostrarMenuConsultas(Lista *qualquer);
 
- // INSERÇÕES
- Lista insereNoInicio(Lista qualquer);
- Lista insereNoFinal(Lista qualquer);
- Lista insereEmPosicaoLivre(Lista qualquer);
+// Operações Básicas
+Lista CriaListaVazia();
+bool verificaSeListaVazia(Lista *qualquer);
+bool verificaSeListaCheia(Lista *qualquer);
+int tamanhoLista(Lista *qualquer);
 
- // REMOÇÕES
- Lista removerDoInicio(Lista qualquer);
- Lista removerFinal(Lista qualquer);
- Lista removeEmPosicaoArbitraria(Lista qualquer);
- Lista removePorValor(Lista qualquer);
+// Inserções
+void insereNoInicio(Lista *qualquer);
+void insereNoFinal(Lista *qualquer);
+void insereEmPosicaoLivre(Lista *qualquer);
 
- // CONSULTAS
- int ConsultaPosicaoDoValor(Lista qualquer);
- void consultarPosicao(Lista qualquer);
- void exibeLista(Lista qualquer);
- void consultarValorPorPosicao(Lista qualquer);
- int ConsultaPosicaoDoValor(Lista qualquer);
+// Remoções
+void removerDoInicio(Lista *qualquer);
+void removerFinal(Lista *qualquer);
+void removeEmPosicaoArbitraria(Lista *qualquer);
+void removePorValor(Lista *qualquer);
+
+// Consultas
+int ConsultaPosicaoDoValor(Lista *qualquer);
+void consultarPosicao(Lista *qualquer);
+void exibeLista(Lista *qualquer);
