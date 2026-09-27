@@ -6,12 +6,10 @@
 
 int main(){
     
-    Lista listaC = {
-    .lista = {1, 2, 3, 4, 5},
-    .n = 5
-};
+    Lista listaAtual;
+    bool listaFoiCriada;
     
-    mostrarMenu(&listaC);
+    mostrarMenu(&listaAtual, &listaFoiCriada);
     
     return 0;
 }
