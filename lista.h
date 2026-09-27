@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define MAX 15
+#define MAX 10
 
  typedef struct {
      int lista[MAX];
@@ -9,10 +9,10 @@
  } Lista;
  
 // Menus
-void mostrarMenu(Lista *qualquer);
-void mostrarMenuInsercoes(Lista *qualquer);
-void mostrarMenuRemocoes(Lista *qualquer);
-void mostrarMenuConsultas(Lista *qualquer);
+void mostrarMenu(Lista *qualquer, bool *listaFoiCriada);
+void mostrarMenuInsercoes(Lista *qualquer, bool *listaFoiCriada);
+void mostrarMenuRemocoes(Lista *qualquer, bool *listaFoiCriada);
+void mostrarMenuConsultas(Lista *qualquer, bool *listaFoiCriada);
 
 // Operações Básicas
 Lista CriaListaVazia();
@@ -23,7 +23,7 @@ int tamanhoLista(Lista *qualquer);
 // Inserções
 void insereNoInicio(Lista *qualquer);
 void insereNoFinal(Lista *qualquer);
-void insereEmPosicaoLivre(Lista *qualquer);
+void insereEmPosicaoArbitraria(Lista *qualquer);
 
 // Remoções
 void removerDoInicio(Lista *qualquer);
