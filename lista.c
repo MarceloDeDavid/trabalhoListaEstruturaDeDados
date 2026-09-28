@@ -6,44 +6,62 @@
 
 // ----------------------  MENUS  ----------------------
 
-void mostrarMenu(Lista *qualquer) {
+void mostrarMenu(Lista *qualquer, bool *listaFoiCriada) {
     int opcao;
     
     do {
-        printf("\n--------------------------\n");
-        printf("Lista atual: ");
-        exibeLista(qualquer);
-        printf("--------------------------\n");
+        
+        if (*listaFoiCriada) {
+            
+            printf("--------------------------\n");
+            printf("Lista atual: ");
+            exibeLista(qualquer);
+            printf("--------------------------");
+        } 
+        
         printf("\n=== MENU ===\n");
-        printf("1. Inserções\n");
-        printf("2. Remoções\n");
-        printf("3. Consultas\n");
-        printf("4. Sair\n");
+        printf("1. Criar lista vazia\n");
+        printf("2. Inserções\n");
+        printf("3. Remoções\n");
+        printf("4. Consultas\n");
+        printf("5. Sair\n");
         printf("Escolha uma opção: ");
         scanf("%d", &opcao);
+        printf("\n\n");
 
         switch (opcao) {
             case 1:
-                mostrarMenuInsercoes(qualquer);
+                *qualquer = CriaListaVazia();
+                *listaFoiCriada = true;
                 break;
             case 2:
-                mostrarMenuRemocoes(qualquer);
+                mostrarMenuInsercoes(qualquer, listaFoiCriada);
                 break;
             case 3:
-                mostrarMenuConsultas(qualquer);
+                mostrarMenuRemocoes(qualquer, listaFoiCriada);
                 break;
             case 4:
+                mostrarMenuConsultas(qualquer, listaFoiCriada);
+                break;
+            case 5:
                 printf("Saindo do programa\n");
                 break;
             default:
                 printf("Opção inválida.\n");
                 break;
         }
-    } while (opcao != 4);
+    } while (opcao != 5);
 }
 
-void mostrarMenuInsercoes(Lista *qualquer) {
+void mostrarMenuInsercoes(Lista *qualquer, bool *listaFoiCriada) {
     int opcao;
+    
+    if (!*listaFoiCriada) {
+        printf("Lista nao criada. Crie uma lista antes de efetuar as operacoes.\n");
+        return;
+    }
+    
+    
     do {
         printf("\n=== MENU DE INSERÇÕES ===\n");
         printf("1. Inserir no início\n");
@@ -61,10 +79,10 @@ void mostrarMenuInsercoes(Lista *qualquer) {
                 insereNoFinal(qualquer);
                 break;
             case 3:
-                insereEmPosicaoLivre(qualquer);
+                insereEmPosicaoArbitraria(qualquer);
                 break;
             case 4:
-                return; 
+                return;
             default:
                 printf("Opção inválida.\n");
                 break;
@@ -72,8 +90,19 @@ void mostrarMenuInsercoes(Lista *qualquer) {
     } while (opcao != 4);
 }
 
-void mostrarMenuRemocoes(Lista *qualquer) {
+void mostrarMenuRemocoes(Lista *qualquer, bool *listaFoiCriada) {
     int opcao;
+    
+    if (!*listaFoiCriada) {
+        printf("Lista nao criada. Crie uma lista antes de efetuar as operacoes.\n");
+        return;
+    }
+    
+    if (!*listaFoiCriada) {
+        printf("Lista nao criada. Crie uma lista antes de efetuar as operacoes.\n");
+        return;
+    }
+    
     do {
         printf("\n=== MENU DE REMOÇÕES ===\n");
         printf("1. Remover do início\n");
@@ -106,8 +135,14 @@ void mostrarMenuRemocoes(Lista *qualquer) {
     } while (opcao != 5);
 }
 
-void mostrarMenuConsultas(Lista *qualquer) {
+void mostrarMenuConsultas(Lista *qualquer, bool *listaFoiCriada) {
     int opcao;
+    
+    if (!*listaFoiCriada) {
+        printf("Lista nao criada. Crie uma lista antes de efetuar as operacoes.\n");
+        return;
+    }
+    
     do {
         printf("\n=== MENU DE CONSULTAS ===\n");
         printf("1. Consultar posição de um valor\n");
@@ -139,6 +174,15 @@ void mostrarMenuConsultas(Lista *qualquer) {
 
 
 // ----------------------  OPERAÇÕES BÁSICAS  ----------------------
+
+
+Lista CriaListaVazia(){
+    Lista novaLista;
+    
+    novaLista.n = 0;
+    
+    return novaLista;
+}
 
 
 bool verificaSeListaVazia(Lista *qualquer){
@@ -187,7 +231,7 @@ void insereNoFinal(Lista *qualquer){
     qualquer->n++;
 }
 
-void insereEmPosicaoLivre(Lista *qualquer){
+void insereEmPosicaoArbitraria(Lista *qualquer){
     if (verificaSeListaCheia(qualquer)) {
         printf("Erro: A lista esta cheia!\n");
         return;
