@@ -10,8 +10,6 @@
  
 // Menus
 void mostrarMenu(Lista *qualquer, bool *listaFoiCriada);
-void mostrarMenuInsercoes(Lista *qualquer, bool *listaFoiCriada);
-void mostrarMenuRemocoes(Lista *qualquer, bool *listaFoiCriada);
 void mostrarMenuConsultas(Lista *qualquer, bool *listaFoiCriada);
 
 // Operações Básicas
@@ -21,15 +19,11 @@ bool verificaSeListaCheia(Lista *qualquer);
 int tamanhoLista(Lista *qualquer);
 
 // Inserções
-void insereNoInicio(Lista *qualquer);
-void insereNoFinal(Lista *qualquer);
-void insereEmPosicaoArbitraria(Lista *qualquer);
+void inserir(Lista *qualquer);
 
 // Remoções
-void removerDoInicio(Lista *qualquer);
-void removerFinal(Lista *qualquer);
-void removeEmPosicaoArbitraria(Lista *qualquer);
-void removePorValor(Lista *qualquer);
+void remover(Lista *qualquer);
+void removerPorValor(Lista *qualquer);
 
 // Consultas
 int ConsultaPosicaoDoValor(Lista *qualquer);
